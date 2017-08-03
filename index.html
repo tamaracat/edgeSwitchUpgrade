@@ -1,0 +1,118 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>Edge Switch Software Upgrade Page</title>
+<link rev="made" href="mailto:rykowski%5C%40northwestern.edu" />
+<link rel="stylesheet" type="text/css" href="assets/style.css" />
+<link rel="stylesheet" media="(max-width: 980px)" href="assets/css/style.css" />
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<form method="post" action="edge_config.pl" enctype="multipart/form-data">
+<html><head><title>IT Telecommunications and Network Services</title>
+<link rel='stylesheet' type='text/css' href='assets/css/style.css'>
+</head>
+<div class='full'>
+<table class='header'>
+  <tr><td class='logo'>
+        <a target="_blank" href='http://www.northwestern.edu/'><img src='seal_two.gif'></a>
+  </td><td class='standard'>
+
+        <table class='inner'>
+          <tr><td class='standard'><h1><a class='header1' href='edge_config.pl'>Edge Switch Software Upgrade Web Page</a></h1>
+
+            <h3><a class='header3' target='_blank'
+              href='http://www.ittns.northwestern.edu/'>IT Telecommunications and Network Services</h3></td></tr>
+          <tr><td class='standard'><br>
+          </td></tr>
+
+        </table>
+</td></table>
+<div class="container_main">
+    <h4 class="gray">Please verify switch name, version, and software before upgrading. </h4>
+    <p /><a href="https://hal.ittns.northwestern.edu/wiki/Edge_switch_upgrade_web_page" style="Color:purple"><h4>Help from the Wiki</h4></a>
+
+<table class="table table-bordered">
+  
+    <td class="col-md-4">
+    <h3>Select the type of switch that you want to upgrade</h3>
+    <button class="button primary" type="button" name="switch_type" value="Login" id="3750x">3750x</button>
+    <button class="button primary" type="button" name="switch_type" value="Login" id="3850">3850</button>
+
+        
+        <h3 id="selectSoftware">Select the new software version</h3><h4> (dir: /var/tftpboot/software/cisco-edge)</h4><select name="soft_list" id="MySelect">
+       
+</select><p /><h4>Enter switch selection criteria.</h4><p>Leave blank for all switches. Use MySQL query syntax e.g ward-%. Space delimit, and no quotes.
+    </p><input type="text" id="fullSwitchName" name="sw_sel"  size="40" maxlength="80"placeholder="full switch name">
+ 
+ <h3>Choose Single Switch or Group of Switches</h3>
+<button class="button primary" type="button" name="single_type" value="single" id="single_id">Single Switch</button>
+<button class="button primary" type="button" name="group_type" value="group" id="group_id">Group of Switches</button>
+
+<br>
+
+    <h4 id="singleORgroup"></h4>
+ 
+  </td><td class="col-md-4">
+    
+  
+
+
+  <h3>Switch Enable and Reload Day & Time</h3>
+ <h4>Enter the enable key without switch type</h4>
+    <input type="password" name="sw_enable"  size="15" maxlength="15" />Verify the enable key:<input type="password" name="sw_enable_ver"  size="15" maxlength="15" ><p /><h4 >Enter time for reload to take place.</h4><h4 class="italic" >Leave blank for no reload.</h4><input type="text" name="sw_time"  size="10" maxlength="10" placeholder="hh:mm"><p /><h4 >Select month for reload.</h4><select name="month" >
+
+<option value="Jan">Jan</option>
+<option value="Feb">Feb</option>
+<option value="Mar">Mar</option>
+<option value="Apr">Apr</option>
+<option value="May">May</option>
+<option value="Jun">Jun</option>
+<option value="Jul">Jul</option>
+<option value="Aug">Aug</option>
+<option value="Sep">Sep</option>
+<option value="Oct">Oct</option>
+<option value="Nov">Nov</option>
+<option value="Dec">Dec</option>
+</select><h4>Enter day for reload</h4><input type="text" name="date" size="10" maxlength="2" placeholder="dd" autofocus>
+<input type="reset"  name=".reset" />&nbsp;&nbsp;
+
+<div class="row">
+<div class="col-lg-2">
+  <br>
+<input type="button" class="button primary" name="submit" id="review_param" value="Review Upgrade Parameters" />
+</div>
+</div>
+<br>
+<div id="switchType"> Switch Type: </div>
+<div id="switchName"> Switch Name: </div>
+<div id="switchSoftware"> Switch Software: </div>
+<div id="switchGroupType"> Single or Group: </div>
+<div id="reloadDateTime"> Reload Date and Time: </div>
+<br>
+<input type="submit" id="submitUpgrade" class="button primary" name="submit" type="button" disabled value="Submit and Get Upgrade Summary" />
+
+<input type="hidden" name="switch_type" value="3750x"  /></form>
+  </td>
+</table>
+
+
+
+
+
+
+
+</div>
+<footer><h4 class="gray">TNS Cyberinfrastructure</h4></footer>
+
+
+<!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</body>
+<script src="assets/js/app.js"></script>
+</html>
