@@ -7,6 +7,8 @@
 <link rev="made" href="mailto:rykowski%5C%40northwestern.edu" />
 <link rel="stylesheet" type="text/css" href="assets/style.css" />
 <link rel="stylesheet" media="(max-width: 980px)" href="assets/css/style.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  	<!-- Added link to the jQuery Library -->
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
@@ -39,14 +41,17 @@
 <table class="table table-bordered">
   
     <td class="col-md-4">
-    <h3>Select the type of switch that you want to upgrade</h3>
-    <button class="button primary" type="button" name="switch_type" value="Login" id="3750x">3750x</button>
-    <button class="button primary" type="button" name="switch_type" value="Login" id="3850">3850</button>
 
-        
-        <h3 id="selectSoftware">Select the new software version</h3><h4> (dir: /var/tftpboot/software/cisco-edge)</h4><select name="soft_list" id="MySelect">
-       
-</select><p /><h4>Enter switch selection criteria.</h4><p>Leave blank for all switches. Use MySQL query syntax e.g ward-%. Space delimit, and no quotes.
+      
+
+    
+<!--name="soft_list" -->
+
+
+
+
+<p /><h4>Enter switch selection criteria.</h4>
+<p>Leave blank for all switches. Use MySQL query syntax e.g ward-%. Space delimit, and no quotes.
     </p><input type="text" id="fullSwitchName" name="sw_sel"  size="40" maxlength="80"placeholder="full switch name">
  
  <h3>Choose Single Switch or Group of Switches</h3>
@@ -101,14 +106,27 @@
 </table>
 
 
+<p class="gray">TNS Maintenance Portal</p>
+</p><input type="password" onchange="TNS_Maintenance()" id="enablePassword" size="40" maxlength="80" placeholder="enable password">
 
+<h3 id = "selectSwitchSoftware"></h3>
+ 
+<div class="row">
+  <div class="col-md-2"><div id="3750xButtons-view"></div></div>
+  <div class="col-md-2"><div id="3850Buttons-view"></div></div>
+</div>
+  
+       
+  <h3 id="selectSoftware"></h3><h4 id="dirPath"></h4>
+  
+  <select onchange="selectSoftwareOnChange()" name="soft_list" id="MySelect"></select> 
+  <div id="MySelectDiv"></div>
 
-
-
+  <p id="demo"></p>
 
 </div>
-<footer><h4 class="gray">TNS Cyberinfrastructure</h4></footer>
 
+<footer><h4 class="gray">TNS Cyberinfrastructure</h4></footer>
 
 <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">

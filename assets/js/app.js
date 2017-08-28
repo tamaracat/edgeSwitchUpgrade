@@ -5,6 +5,8 @@ window.onload = function() {
      
 };
 
+var SwitchSoftware = "";
+var enableMasterPassowrd = "s1b2bstsesw";
 
 var C3750xIOS = ['c3750e-ipbasek9-tar.122-55.SE1.tar',
         'c3750e-ipbasek9-tar.122-58.SE2.tar',
@@ -36,9 +38,9 @@ var C3850IOS = ['cat3k_caa-universalk9.16.03.01.SPA.bin',
 
 var switchTypeText = "";
 
-$("#3750x").on("click",update_3750X_list);
+$("#3750xButtons-view").on("click",update_3750X_list);
 
-$("#3850").on("click",update_3850_list);
+$("#3850Buttons-view").on("click",update_3850_list);
 
 $("#single_id").on("click",update_single_choice);
 
@@ -59,18 +61,24 @@ function update_3750X_list(){
         select.remove(j);
     }
 
+    var opt = document.createElement("option");
+    opt.text = "-- select a software version --";
+    opt.value = "disabled selected";
+    var sel = document.getElementById("MySelect");
+    sel.options[sel.options.length] = opt;
+
     for (var i = 0; i < C3750xIOS.length; i++) {
 
         // Creating and storing an option tag
         var opt = document.createElement("option");
         opt.text = C3750xIOS[i];
-        opt.value = "value";
+        opt.value = C3750xIOS[i];
         var sel = document.getElementById("MySelect");
         sel.options[sel.options.length] = opt;
       }
      
       $("#selectSoftware").html("Select the new 3750x software version");
-      go();
+      
       
 }
 function update_3850_list(){
@@ -85,20 +93,25 @@ function update_3850_list(){
 
         select.remove(j);
     }
-     
-    
+
+    var opt = document.createElement("option");
+    opt.text = "-- select a software version --";
+    opt.value = "disabled selected";
+    var sel = document.getElementById("MySelect");
+    sel.options[sel.options.length] = opt;
+
      for (var i = 0; i < C3850IOS.length; i++) {
 
         // Creating and storing an option tag
         var opt = document.createElement("option");
         opt.text = C3850IOS[i];
-        opt.value = "value";
+        opt.value = C3850IOS[i];
         var sel = document.getElementById("MySelect");
         sel.options[sel.options.length] = opt;
       }
 
       $("#selectSoftware").html("Select the new 3850 software version");
-      go();
+      
 }
 
 function update_single_choice(){
@@ -144,12 +157,57 @@ function go(){
 
     alert(dropdown.children.length);
 
+    
     for(var i=0, max=dropdown.children.length; i<max; i++) {
 
-
         if(textSelected == dropdown.children[i].innerHTML){
+            
             alert(textSelected);
             return;
         }
-    }
+        
+     }
+  
 }
+function selectSoftwareOnChange() {
+    var x = document.getElementById("MySelect").value;
+    document.getElementById("demo").innerHTML = "You selected: " + x;
+  
+}
+
+function TNS_Maintenance(){
+
+    var enablePWD = document.getElementById("enablePassword");
+
+    if (enablePWD.value == enableMasterPassowrd){
+
+        
+        $("#selectSwitchSoftware").text("Select switch type, then software version.");
+        $("#selectSoftware").text("Select the new software version");
+        $("#dirPath").text("(dir: /var/tftpboot/software/cisco-edge)");
+
+       
+       $("#3750xButtons-view").empty();
+        var a = $("<button>");
+        a.addClass("button primary");
+        a.addClass("switch_button");
+        a.attr("3750x");
+        a.text("3750x");
+        $("#3750xButtons-view").append(a);
+
+        $("#3850Buttons-view").empty();
+        var a = $("<button>");
+        a.addClass("button primary");
+        a.addClass("switch_button");
+        a.attr("3850");
+        a.text("3850");
+        $("#3850Buttons-view").append(a);
+        
+        
+
+    }
+    else{
+
+        alert("Incorrect password, please try again.");
+    }
+} 
